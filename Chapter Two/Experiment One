@@ -1,1 +1,33 @@
+(1)使用 Debug,将下面的程序段写入内存，逐条执行，观察每条指令执行后CPU中相关寄存器中内容的变化。
+mov ax,4E20H      AX = 4E20H
+add ax,1416H      AX = 6236H
+mov bx,2000H      BX = 2000H
+add ax,bx         AX = 8236H
+mov bx,ax         BX = 8236H
+add ax,bx         AX = 046CH
+mov ax,001AH      AX = 001AH
+mov bx,0026H      BX = 0026H
+add al,bl         AX = 0040H
+add ah,bl         AX = 2640H
+add bh,al         BX = 4026H
+mov ah,0          AX = 0040H
+add al,bl         AX = 0066H
+add al,9CH        AX = 0002H
+(2)将下面3条指令写入从2000:0开始的内存单元中，利用这3条指令计算2的8次方。
+mov ax,1
+add ax,ax
+jmp 2000:0003
 
+-a 2000:0
+mov ax,1
+add ax,ax
+jmp 2000:0003
+-a 当前CS:当前IP
+jmp 2000:0
+(3)查看内存中的内容。PC机主板上的ROM中写有一个生产日期，在内存FFF0OH~FFFFFH的某几个单元中，请找到这个生产日期并试图改变它。
+-d fff0:0
+-d fff0:0080
+-e fff0:00f5
+C0000H~FFFFFH的内存单元属于只读存储器，其中的内容无法写入修改。
+(4)向内存从B8100H开始的单元中填写数据，如：-e B810:0000 01 01 02 02 03 03 04 04
+B8100H开始的单元属于显存单元，向显存中写入数据，这些数据会被显示卡输出到显示器上。
