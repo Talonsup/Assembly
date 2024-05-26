@@ -17,7 +17,7 @@ start:  mov ax,stack
         mov ax,data
         mov ds,ax
 
-        push ds;[0]
+        push ds:[0]
         push ds:[2]
         pop ds:[2]
         pop ds:[0]
