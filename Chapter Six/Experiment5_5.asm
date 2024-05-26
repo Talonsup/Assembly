@@ -18,19 +18,19 @@ code segment
 start:  mov ax,a
         mov ss,ax
 		
-		mov ax,b
-		mov es,ax
+	mov ax,b
+	mov es,ax
 		
-		mov ax,c
-		mov ds,ax
+	mov ax,c
+	mov ds,ax
 		
         mov bx,0
-		mov cx,8
-	s:	mov al,ss:[bx]
-		add al,es:[bx]
-		mov ds:[bx],al
-		inc bx
-		loop s
+	mov cx,8
+s:	mov al,ss:[bx]
+	add al,es:[bx]
+	mov ds:[bx],al
+	inc bx
+	loop s
 	
         mov ax,4c00h
         int 21h
