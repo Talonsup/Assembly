@@ -27,3 +27,6 @@ start:  mov ax,stack
 code ends
 
 end start
+;CPU执行程序，程序返回前，data段中的数据为
+;CPU执行程序，程序返回前，cs=、ss=、ds=
+;设程序加载后，code段的段地址为X,则data段的段地址为,stack段的段地址为
