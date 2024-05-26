@@ -1,1 +1,28 @@
-
+(1)补全下面的程序，使其可以将10000H~1000FH中的8个字，逆序复制到20000H~2000FH中。
+mov ax,1000H
+mov ds,ax
+mov ax,2000H
+mov ss,ax
+mov ss,0010H
+push [0]
+push [2]
+push [4]
+push [6]
+push [8]
+push [A]
+push [C]
+push [E]
+(2)补全下面的程序，使其可以将10000H~1000FH中的8个字，逆序复制到20000H~2000FH中。
+mov ax,2000H
+mov ds,ax
+mov ax,1000H
+mov ss,ax
+mov sp,0
+pop [E]
+pop [C]
+pop [A]
+pop [8]
+pop [6]
+pop [4]
+pop [2]
+pop [0]
