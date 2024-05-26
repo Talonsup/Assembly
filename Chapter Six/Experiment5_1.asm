@@ -1,7 +1,7 @@
 assume cs:code,ds:data,ss:stack
 
 data segment
-  dw 0123h,0456h,0789h,Oabch,0defh,0fedh,0cbah,0987h
+  dw 0123h,0456h,0789h,0abch,0defh,0fedh,0cbah,0987h
 data ends
 
 stack segment
