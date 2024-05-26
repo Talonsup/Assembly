@@ -8,7 +8,7 @@ codesg segment
 	mov bx,0
 	mov cx,64
 	
-s:	mov ds:[bx],bl
+s:	mov [bx],bl
 	inc bl
 	loop s
 	
