@@ -7,20 +7,20 @@ codesg segment
 	dw 0,0,0,0,0,0,0,0,0,0
 	
 start:	mov ax,cs
-		mov ss,ax
-		mov sp,24h
+	mov ss,ax
+	mov sp,24h
 		
-		mov ax,0
-		mov ds,ax
-		mov bx,0
-		mov cx,8
-	s:	push [bx]
-		pop cs:[bx]
-		add bx,2
-		loop s
+	mov ax,0
+	mov ds,ax
+	mov bx,0
+	mov cx,8
+s:	push [bx]
+	pop cs:[bx]
+	add bx,2
+	loop s
 		
-		mov ax,4c00H
-		int 21H
+	mov ax,4c00H
+	int 21H
 	
 codesg ends
 
