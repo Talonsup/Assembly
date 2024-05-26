@@ -1,1 +1,25 @@
+(1)使用Debug,将下面的程序段写入内存，逐条执行，根据指令执行后的实际运行情况填空。
+mov ax,ffff
+mov ds,ax
 
+mov ax,2200
+mov ss,ax
+
+mov sp,0100
+
+mov ax,[0]          ;ax = C0EAH
+add ax,[2]          ;ax = C0FCH
+mov bx,[4]          ;bx = 30F0H
+add bx,[6]          ;bx = 6021H
+
+push ax             ;sp = 00FEH;  修改的内存单元的地址是2200:00FE~2200:00FF内容为C0FCH
+push bx             ;sp = 00FCH;  修改的内存单元的地址是2200:00FC~2200:00FD内容为6021H
+pop ax              ;sp = 00FEH;  ax = 6021H
+pop bx              ;sp = 0010H;  bx = C0FCH
+
+push [4]            ;sp = 00FEH;  修改的内存单元的地址是2200:00FE~2200:00FF内容为30F0H
+push [6]            ;sp = 00FCH;  修改的内存单元的地址是2200:00FC~2200:00FD内容为2F31H
+(2)仔细观察图3.19中的实验过程，然后分析：为什么 2000:0~2000:f中的内容会发生改变?
+在执行mov ss,ax指令后CS与IP的值入栈。
+2000:c~2000:d为CS值；
+2000:a~2000:b为IP值；
