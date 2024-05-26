@@ -2,16 +2,16 @@ assume cs:codesg
 
 codesg segment
 
-	mov ax,2000H
-	mov ss,ax
-	mov sp,0
-	add sp,10
-	pop ax
-	pop bx
-	push ax
-	push bx
-	pop ax
-	pop bx
+	mov ax,2000H			;AX = 2000H; BX = 0000H; SS = 0769H; SP = 0; CS = 076AH; IP = 0003H; 栈顶内容为0
+	mov ss,ax			;AX = 2000H; BX = 0000H; SS = 2000H; SP = 0; CS = 076AH; IP = 0005H; 栈顶内容为2000H
+	mov sp,0			;AX = 2000H; BX = 0000H; SS = 2000H; SP = 0; CS = 076AH; IP = 0008H; 栈顶内容为0
+	add sp,10			;AX = 2000H; BX = 0000H; SS = 2000H; SP = 000AH; CS = 076AH; IP = 000BH; 栈顶内容为01A3H
+	pop ax				;AX = 01A3H; BX = 0000H; SS = 2000H; SP = 000CH; CS = 076AH; IP = 000CH; 栈顶内容为0
+	pop bx				;AX = 01A3H; BX = 0000H; SS = 2000H; SP = 000EH; CS = 076AH; IP = 000DH; 栈顶内容为0
+	push ax				;AX = 01A3H; BX = 0000H; SS = 2000H; SP = 000CH; CS = 076AH; IP = 000EH; 栈顶内容为01A3H
+	push bx				;AX = 01A3H; BX = 0000H; SS = 2000H; SP = 000AH; CS = 076AH; IP = 000FH; 栈顶内容为0
+	pop ax				;AX = 0000H; BX = 0000H; SS = 2000H; SP = 000CH; CS = 076AH; IP = 0010H; 栈顶内容为01A3H
+	pop bx				;AX = 0000H; BX = 01A3H; SS = 2000H; SP = 000EH; CS = 076AH; IP = 0011H; 栈顶内容为0
 	
 	mov ax,4c00H
 	int 21H
@@ -19,3 +19,10 @@ codesg segment
 codesg ends
 
 end
+
+内存区的前256个字节存放的是PSP。在PSP处向后的空间存放的是程序，即CS:IP所指向的内容，PSP占256(100H)字节，CS = 076AH，故PSP处内存地址为075A:0
+
+-d 075A:0
+找到PSP头CD 20
+-d 075A:80
+找到t1.exe程序名
