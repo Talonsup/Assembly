@@ -41,8 +41,8 @@ show_str:
 change:	
 	mov ch,[si]		;si控制循环字符
 	jcxz ok			;到0结束循环
-	mov es:[bx],ch	;字符传递
-	mov es:1[bx],al	;颜色传递
+	mov es:[bx],ch		;字符传递
+	mov es:1[bx],al		;颜色传递
 	inc si
 	add bx,2
 	jmp change	
