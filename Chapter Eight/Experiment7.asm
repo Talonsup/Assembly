@@ -21,52 +21,52 @@ codesg segment
 start:  mov ax,data
         mov ds,ax
 		
-		mov ax,table
-		mov es,ax
+	mov ax,table
+	mov es,ax
 		
 	;写入年份及收入
-		mov cx,21
-		mov bx,0
-		mov si,0
-	s:	push cx
-		mov cx,4		
-		mov di,0
-	s0:	mov al,ds:[si]
-		mov es:[bx][di],al
-		mov al,ds:84[si]
-		mov es:5[bx][di],al
-		inc si
-		inc di
-		loop s0
-		add bx,16
-		pop cx
-		loop s
+	mov cx,21
+	mov bx,0
+	mov si,0
+s:	push cx
+	mov cx,4		
+	mov di,0
+s0:	mov al,ds:[si]
+	mov es:[bx][di],al
+	mov al,ds:84[si]
+	mov es:5[bx][di],al
+	inc si
+	inc di
+	loop s0
+	add bx,16
+	pop cx
+	loop s
 	
-	;写入雇员数
-		mov cx,21
-		mov bx,0
-		mov si,0
-	s1:	push cx
-		mov cx,2		
-		mov di,0
-	s2:	mov al,ds:168[si]
-		mov es:10[bx][di],al
-		inc si
-		inc di
-		loop s2
-		add bx,16
-		pop cx
-		loop s1
+;写入雇员数
+	mov cx,21
+	mov bx,0
+	mov si,0
+s1:	push cx
+	mov cx,2		
+	mov di,0
+s2:	mov al,ds:168[si]
+	mov es:10[bx][di],al
+	inc si
+	inc di
+	loop s2
+	add bx,16
+	pop cx
+	loop s1
 		
-	;写入人均收入
-		mov cx,21
-		mov bx,0
-	s3:	mov ax,word ptr es:5[bx]
-		mov dx,word ptr es:7[bx]
-		div word ptr es:10[bx]		
-		mov word ptr es:13[bx],ax
-		add bx,16
-		loop s3
+;写入人均收入
+	mov cx,21
+	mov bx,0
+s3:	mov ax,word ptr es:5[bx]
+	mov dx,word ptr es:7[bx]
+	div word ptr es:10[bx]		
+	mov word ptr es:13[bx],ax
+	add bx,16
+	loop s3
 		
         mov ax,4c00h
         int 21h
