@@ -1,0 +1,42 @@
+(1)下面的程序执行后，ax中的数值为多少?
+assume cs:code
+stack segment
+  dw 8 dup(0)
+stack ends
+code segment
+start:  mov ax,stack
+        mov ss,ax
+        mov sp,16
+        mov ds,ax
+        mov ax,0
+        call word ptr ds:[0EH]    ;push ip;ip为下一条指令地址0eh，又跳转至0eh，故顺序执行
+        inc ax
+        inc ax
+        inc ax
+        mov ax,4c00h
+        int 21h
+code ends
+end start
+;ax = 3
+(2)下面的程序执行后，ax和bx中的数值为多少?
+assume cs:code
+data segment
+  dw 8 dup(0)
+data ends
+code segment
+start:  mov ax,data
+        mov ss,ax
+        mov sp,16
+        mov word ptr ss:[0],offset s
+        mov ss:[2],cs
+        call dword ptr ss:[0]
+        nop
+      s:mov ax,offset s
+        sub ax,ss:[0cH]
+        mov bx,cs
+        sub bx,ss:[0eH]
+        mov ax,4c00h
+        int 21h
+code ends
+end start
+;ax = 0001h,bx = 0000h
