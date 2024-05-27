@@ -8,12 +8,12 @@ data ends
 code segment
 
 start:	mov ax,data
-		mov ds,ax
-		mov bx,0
-		jmp word ptr [bx+1]
+	mov ds,ax
+	mov bx,0
+	jmp word ptr [bx+1]
 		
-		mov ax,4c00h
-		int 21h
+	mov ax,4c00h
+	int 21h
 		
 code ends
 
@@ -28,14 +28,14 @@ data ends
 code segment
 
 start:	mov ax,data
-		mov ds,ax
-		mov bx,0
-		mov [bx],0
-		mov [bx+2],cs
-		jmp dword ptr ds:[0]
+	mov ds,ax
+	mov bx,0
+	mov [bx],0
+	mov [bx+2],cs
+	jmp dword ptr ds:[0]
 		
-		mov ax,4c00h
-		int 21h
+	mov ax,4c00h
+	int 21h
 		
 code ends
 
