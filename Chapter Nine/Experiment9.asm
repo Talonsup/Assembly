@@ -1,3 +1,4 @@
+;在屏幕中间分别显示绿色、绿底红色、白底蓝色的字符串'welcome to masm!'。
 assume cs:codesg
 
 datasg segment
@@ -6,7 +7,7 @@ datasg ends
 
 codesg segment
 
-start:	mov ax,datasg
+start:		mov ax,datasg
 		mov ds,ax
 		
 		mov ax,0B872H	;控制显示在中间
