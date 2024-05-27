@@ -24,7 +24,7 @@ start:  mov ax,data
 	mov ax,table
 	mov es,ax
 		
-	;写入年份及收入
+;写入年份及收入
 	mov cx,21
 	mov bx,0
 	mov si,0
