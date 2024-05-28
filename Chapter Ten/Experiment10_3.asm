@@ -31,7 +31,7 @@ dtoc:
 		
 		add dx,30h
 		inc si
-		mov ds:[si],dl	;逆序存入
+		mov ds:[si],dl		;逆序存入
 		
 		mov cx,ax		;判断商是否为0，为0跳出，不为0继续
 		jcxz ok
