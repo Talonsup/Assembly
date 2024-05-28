@@ -22,7 +22,7 @@ start:
 		mov cl,2
 		call show_str
 		mov ax,4c00h
-        int 21h
+        	int 21h
 		
 dtoc:
 		mov bx,0ah
