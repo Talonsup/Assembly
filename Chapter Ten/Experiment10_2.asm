@@ -17,7 +17,7 @@ start:
 		call divdw
 		
 		mov ax,4c00h
-        int 21h
+        	int 21h
 		
 divdw:
 		mov si,ax	;si存放低位L
