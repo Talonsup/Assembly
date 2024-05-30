@@ -1,4 +1,4 @@
-补全下面的程序，统计F000:0处32个字节中，大小在[32,128]的数据的个数。
+(1)补全下面的程序，统计F000:0处32个字节中，大小在[32,128]的数据的个数。
 	mov ax,0f000h
 	mov ds,ax
 	mov bx,0
@@ -10,11 +10,11 @@ S: 	mov al,[bx]
 	cmp al,128
 	ja s0
 	inc dx
-s0: inc bx
+s0: 	inc bx
 	loop s
 	
 	
-补全下面的程序，统计F000:0处32个字节中，大小在(32,128)的数据的个数。
+(2)补全下面的程序，统计F000:0处32个字节中，大小在(32,128)的数据的个数。
 	mov ax,0f000h
 	mov ds,ax
 	mov bx,0
@@ -26,5 +26,5 @@ S: 	mov al,[bx]
 	cmp al,128
 	jnb s0
 	inc dx
-s0: inc bx
+s0: 	inc bx
 	loop s
