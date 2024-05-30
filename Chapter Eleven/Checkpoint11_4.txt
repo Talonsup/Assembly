@@ -9,9 +9,9 @@ pop ax
 and al,11000101B	
 and ah,00001000B
 
-;flag 		    0 0 0 0 OF DF IF TF SF ZF 0 AF 0 PF 0 CF
-;popf		      0 0 0 0 0  0  0  0  0  0  0 0  0 0  0 0
-;add ax,0010h 0 0 0 0 0 0 IF TF 0 1 0 AF 0 1 0 1
+;flag0 0 0 0 OF DF IF TF SF ZF 0 AF 0 PF 0 CF
+;popf0 0 0 0 0  0  0  0  0  0  0 0  0 0  0 0
+;add ax,0010h0 0 0 0 0 0 IF TF 0 1 0 AF 0 1 0 1
 ;ax = 0000 00IFTF 010AF 0101
 
 ;and al,11000101B	
