@@ -1,0 +1,36 @@
+(1)在上面的内容中，我们用7ch中断例程实现loop的功能，则上面的7ch中断例程所能进行的最大转移位移是多少?
+上述中断例程进行的位移存放在寄存器BX内，寄存器BX为16位寄存器，所表示的最大转移位移为-32768~32767。
+(2)用7ch中断例程完成jmp nearptrs指令的功能，用bx向中断例程传送转移位移。
+程序安装部分和中断处理程序部分为：
+assume cs:code
+
+code segment
+start:
+	mov ax,0
+	mov es,ax
+	mov di,200h
+	mov ax,cs
+	mov ds,ax
+	mov si,offset lp
+	mov cx,offset lpend - offset lp
+	cld 
+	rep movsb
+	
+	mov ax,0
+	mov es,ax
+	mov word ptr es:[7ch*4],200h
+	mov word ptr es:[7ch*4+2],0h
+	mov ax,4c00h
+	int 21h
+
+lp:
+	push bp
+	mov bp,sp
+	add ss:[bp+2],bx
+	pop bp
+	iret
+lpend:
+	nop
+
+code ends
+end start
