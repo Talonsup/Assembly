@@ -32,11 +32,11 @@ s:
 	add al,30h
 	
 	mov ch,00000010b
-	mov byte ptr es:[di],ah		;十位
+	mov byte ptr es:[di],ah         ;十位
 	mov byte ptr es:[di+1],ch
-	mov byte ptr es:[di+2],al	;个位
+	mov byte ptr es:[di+2],al       ;个位
 	mov byte ptr es:[di+3],ch
-	mov al,[si+1]				;/ ：空格样式
+	mov al,[si+1]                   ;/ ：空格样式
 	mov byte ptr es:[di+4],al
 	mov byte ptr es:[di+5],ch
 	
