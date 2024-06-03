@@ -1,0 +1,33 @@
+(1)仔细分析一下上面的int9中断例程，看看是否可以精简一下？
+pushf
+pushf
+pop ax
+and ah,11111100b
+push ax
+popf
+call dword ptr ds:[0]
+可以精简为：
+pushf
+call dword ptr ds:[0]
+(2)仔细分析上面程序中的主程序，看看有什么潜在的问题？
+mov word ptr es:[9*4],offset int9
+mov es:[9*4+2],cs
+
+push ds:[0]
+pop es:[9*4]
+push ds:[2]
+pop es:[9*4+2]
+
+执行上述命令时若出现键盘中断指令，则会发生错误，修改如下
+
+cli
+mov word ptr es:[9*4],offset int9
+mov es:[9*4+2],cs
+sti
+
+cli
+push ds:[0]
+pop es:[9*4]
+push ds:[2]
+pop es:[9*4+2]
+sti
