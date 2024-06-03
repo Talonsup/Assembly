@@ -184,13 +184,12 @@ main:
 	menu2		db '2)start system',0
 	menu3		db '3)clock',0
 	menu4		db '4)set clock',0
-    menu_addr	dw menu1-main+7e00h, menu2-main+7e00h, menu3-main+7e00h, menu4-main+7e00h
+    	menu_addr	dw menu1-main+7e00h, menu2-main+7e00h, menu3-main+7e00h, menu4-main+7e00h
 	timestr		db 'yy/mm/dd hh:mm:ss',0
 	timeaddr	db 9,8,7,4,2,0
-    strbuffer	db 100 dup (0)
+    	strbuffer	db 100 dup (0)
 	
 main_start:
-	;初始化数据段寄存器
     mov ax,0
     mov ds,ax
 
@@ -198,10 +197,8 @@ main_start:
     call show_menu
     call choose_item
 
-;选择菜单项
+
 choose_item:
-	;输入字符串，回车确认，ds:si指向字符串缓冲区
-	;输入非1234，重新显示菜单
     mov si,strbuffer-main+7e00h
     call getstr
 
@@ -216,7 +213,6 @@ choose_item:
     jmp main_start 
 
 item1:
-	;重启系统
     mov bx,0ffffh
     push bx
     mov bx,0
@@ -224,15 +220,13 @@ item1:
     retf
 	
 item2: 
-	;引导现有系统
-    ;将原mbr拷贝到7c00h
     mov bx,0
     mov es,bx
     mov bx,7c00h
 
     ;读取硬盘c_0面，0道，1扇区到0:7c00h
-    mov dl,80h
-	mov dh,0
+	mov dl,80h
+mov dh,0
     mov ch,0
 	mov cl,1
 	mov al,1
