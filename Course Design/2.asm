@@ -226,8 +226,8 @@ item2:
 
     ;读取硬盘c_0面，0道，1扇区到0:7c00h
 	mov dl,80h
-mov dh,0
-    mov ch,0
+	mov dh,0
+	mov ch,0
 	mov cl,1
 	mov al,1
 	mov ah,2
