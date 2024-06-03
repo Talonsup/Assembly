@@ -8,7 +8,7 @@ assume cs:code
 code segment
 start:
 	mov ax,cs
-  mov ds,ax
+  	mov ds,ax
 	mov si,offset int7                       
 	mov ax,0
 	mov es,ax
